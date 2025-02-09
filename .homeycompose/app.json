@@ -8,7 +8,7 @@
   "sdk": 3,
   "brandColor": "#d13640",
   "name": {
-    "en": "FiatUConnect"
+    "en": "Fiat UConnect"
   },
   "description": {
     "en": "Connect your FIAT to homey to see its information and control some functions"
