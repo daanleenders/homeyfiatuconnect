@@ -1,6 +1,6 @@
 # <img src="./assets/icon.svg" width="80" height="80" style="vertical-align: middle;"> FiatUConnect
 
-Connect your FIAT to homey to see it's information and control some functions. Needs a car with uconnect services enabled and valid fiat account.
+Connect your FIAT to homey to see its information and control some functions. Needs a car with uconnect services enabled and valid fiat account.
 
 ## Acknowledgements
 
