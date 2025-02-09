@@ -1,0 +1,32 @@
+{
+  "extends": "athom/homey-app",
+  "rules": {
+    "indent": [
+      "error",
+      "tab"
+    ],
+    "no-tabs": [
+      "error",
+      {
+        "allowIndentationTabs": true
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "mjs": "always"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".mjs"
+        ]
+      }
+    }
+  }
+}
