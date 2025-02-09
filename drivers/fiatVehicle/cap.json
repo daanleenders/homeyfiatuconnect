@@ -1,0 +1,22 @@
+
+"capabilitiesOptions": {
+"onoff": {
+"titleTrue": {
+"en": "Unlock",
+"nl": "Ontgrendelen"
+},
+"titleFalse": {
+"en": "Lock",
+"nl": "Vergrendelen"
+},
+"insightsTitleTrue":  {
+"en": "Locked",
+"nl": "Vergrendeld"
+},
+"insightsTitleFalse":  {
+"en": "Unlocked",
+"nl": "Ontgrendeld"
+},
+"getable": false
+}
+},

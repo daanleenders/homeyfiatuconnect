@@ -1,0 +1,204 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "nl.daanleenders.fiatuconnect",
+  "version": "1.0.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "brandColor": "#d13640",
+  "name": {
+    "en": "FiatUConnect"
+  },
+  "description": {
+    "en": "Connect your FIAT to homey to see it's information and control some functions"
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Daan Leenders",
+    "email": "daanleenders@gmail.com"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Fiat"
+      },
+      "class": "car",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery",
+        "battery_charging_state",
+        "fiat_vehicle_action_lock",
+        "fiat_vehicle_action_unlock",
+        "fiat_vehicle_action_hvac",
+        "fiat_vehicle_measurement_odometer"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/fiatVehicle/assets/images/small.png",
+        "large": "/drivers/fiatVehicle/assets/images/large.png",
+        "xlarge": "/drivers/fiatVehicle/assets/images/xlarge.png"
+      },
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "pair": [
+        {
+          "id": "login",
+          "template": "login_credentials",
+          "options": {
+            "logo": "icon.svg",
+            "title": {
+              "en": "Login with your uConnect credentials"
+            },
+            "usernameLabel": {
+              "en": "E-mail address"
+            },
+            "usernamePlaceholder": {
+              "en": "john@doe.com"
+            },
+            "passwordLabel": {
+              "en": "Password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "title": "Enter security PIN",
+            "hint": "Enter the vehicle's pincode",
+            "type": "number",
+            "length": 4
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "fiatVehicle"
+    }
+  ],
+  "capabilities": {
+    "fiat_vehicle_action_blink_lights": {
+      "type": "boolean",
+      "title": {
+        "en": "Blink the lights"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": false,
+      "icon": "/assets/car-parking-lights.svg",
+      "insights": false
+    },
+    "fiat_vehicle_action_hvac": {
+      "type": "boolean",
+      "title": {
+        "en": "Start A/C"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": false,
+      "icon": "/assets/air-conditioner.svg",
+      "insights": false
+    },
+    "fiat_vehicle_action_lock": {
+      "type": "boolean",
+      "title": {
+        "en": "Lock the car"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": false,
+      "icon": "/assets/car-door-lock.svg",
+      "insights": false
+    },
+    "fiat_vehicle_action_lock_trunk": {
+      "type": "boolean",
+      "title": {
+        "en": "Lock the trunk"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": false,
+      "icon": "/assets/lock-outline.svg",
+      "insights": false
+    },
+    "fiat_vehicle_action_unlock": {
+      "type": "boolean",
+      "title": {
+        "en": "Unlock the car"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": false,
+      "icon": "/assets/car-door-lock-open.svg",
+      "insights": false
+    },
+    "fiat_vehicle_action_unlock_trunk": {
+      "type": "boolean",
+      "title": {
+        "en": "Unlock the trunk"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": false,
+      "icon": "/assets/lock-open-outline.svg",
+      "insights": false
+    },
+    "fiat_vehicle_measurement_odometer": {
+      "type": "number",
+      "title": {
+        "en": "Odometer"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/counter.svg",
+      "insights": true,
+      "units": {
+        "en": "km"
+      },
+      "min": 0,
+      "step": 1,
+      "decimals": 0
+    }
+  }
+}

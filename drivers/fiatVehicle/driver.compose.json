@@ -1,0 +1,79 @@
+{
+  "name": {
+    "en": "Fiat"
+  },
+  "class": "car",
+  "capabilities": [
+    "measure_battery",
+    "alarm_battery",
+    "battery_charging_state",
+    "fiat_vehicle_action_lock",
+    "fiat_vehicle_action_unlock",
+    "fiat_vehicle_action_hvac",
+    "fiat_vehicle_measurement_odometer"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "energy": {
+    "batteries": [
+      "INTERNAL"
+    ]
+  },
+  "pair": [
+    {
+      "id": "login",
+      "template": "login_credentials",
+      "options": {
+        "logo": "icon.svg",
+        "title": {
+          "en": "Login with your uConnect credentials"
+        },
+        "usernameLabel": {
+          "en": "E-mail address"
+        },
+        "usernamePlaceholder": {
+          "en": "john@doe.com"
+        },
+        "passwordLabel": {
+          "en": "Password"
+        },
+        "passwordPlaceholder": {
+          "en": "Password"
+        }
+      }
+    },
+    {
+      "id": "pincode",
+      "template": "pincode",
+      "options": {
+        "title": "Enter security PIN",
+        "hint": "Enter the vehicle's pincode",
+        "type": "number",
+        "length": 4
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": true
+      },
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

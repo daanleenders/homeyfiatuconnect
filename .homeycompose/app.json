@@ -1,0 +1,29 @@
+{
+  "id": "nl.daanleenders.fiatuconnect",
+  "version": "1.0.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "brandColor": "#d13640",
+  "name": {
+    "en": "FiatUConnect"
+  },
+  "description": {
+    "en": "Connect your FIAT to homey to see it's information and control some functions"
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Daan Leenders",
+    "email": "daanleenders@gmail.com"
+  }
+}
