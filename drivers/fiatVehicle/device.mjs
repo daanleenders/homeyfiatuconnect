@@ -152,8 +152,24 @@ export default class FiatVehicle extends Homey.Device {
 				this.convertChartingStatusToChartingState(battery.chargingStatus),
 			),
 			this.setCapabilityValue(
+				'fiat_vehicle_measurement_distance_to_empty',
+				Math.round(vehicleStatus.vehicleInfo.fuel.distanceToEmpty.value),
+			),
+			this.setCapabilityValue(
+				'fiat_vehicle_measurement_distance_to_service',
+				parseFloat(vehicleStatus.vehicleInfo.distanceToService.distanceToService.value),
+			),
+			this.setCapabilityValue(
 				'fiat_vehicle_measurement_odometer',
 				Math.round(vehicleStatus.vehicleInfo.odometer.odometer.value),
+			),
+			this.setCapabilityValue(
+				'fiat_vehicle_measurement_time_to_fully_charge_l2',
+				battery.timeToFullyChargeL2,
+			),
+			this.setCapabilityValue(
+				'fiat_vehicle_measurement_time_to_fully_charge_l3',
+				battery.timeToFullyChargeL3,
 			),
 		]);
 	}

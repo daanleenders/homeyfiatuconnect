@@ -22,5 +22,102 @@
         "en": "Unlock vehicle"
       }
     }
+  ],
+  "triggers": [
+    {
+      "id": "fiat_vehicle_measurement_distance_to_empty_changed",
+      "title": {
+        "en": "Distance to empty updated"
+      },
+      "hint": {
+        "en": "Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime."
+      },
+      "tokens": [
+        {
+          "type": "number",
+          "name": "fiat_vehicle_measurement_distance_to_empty",
+          "title": {
+            "en": "Distance to empty"
+          },
+          "example": "61"
+        }
+      ]
+    },
+    {
+      "id": "fiat_vehicle_measurement_distance_to_service_changed",
+      "title": {
+        "en": "Distance to service updated"
+      },
+      "hint": {
+        "en": "Triggers when we detect a change to the odometer which means the distance to the next service is also changed. This usually happens at the end of a trip but can happen while driving."
+      },
+      "tokens": [
+        {
+          "type": "number",
+          "name": "fiat_vehicle_measurement_distance_to_service",
+          "title": {
+            "en": "Distance to service"
+          },
+          "example": "14279.0"
+        }
+      ]
+    },
+    {
+      "id": "fiat_vehicle_measurement_odometer_changed",
+      "title": {
+        "en": "Odometer updated"
+      },
+      "hint": {
+        "en": "Triggers when we detect a change in the odometer. This usually happens at the end of a trip but can happen while driving."
+      },
+      "tokens": [
+        {
+          "type": "number",
+          "name": "fiat_vehicle_measurement_odometer",
+          "title": {
+            "en": "Odometer"
+          },
+          "example": "1086"
+        }
+      ]
+    },
+    {
+      "id": "fiat_vehicle_measurement_time_to_fully_charge_l2_changed",
+      "title": {
+        "en": "Time to full on a L2 charger updated"
+      },
+      "hint": {
+        "en": "Level 2 are any EV specific AC chargers (your wall charger, public chargers at destinations, etc.). Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime. This is an estimate by your vehicle for a generic l2 charger, not depended on the current charging speed."
+      },
+      "tokens": [
+        {
+          "type": "number",
+          "name": "fiat_vehicle_measurement_time_to_fully_charge_l2",
+          "title": {
+            "en": "L2 charge time"
+          },
+          "example": "81"
+        }
+      ]
+    },
+    {
+      "id": "fiat_vehicle_measurement_time_to_fully_charge_l3_changed",
+      "title": {
+        "en": "Time to full on a L3 charger updated"
+      },
+      "hint": {
+        "en": "Level 3 are DC chargers (fastest way to charge, usually used during trips to top up your battery). Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime. This is an estimate by your vehicle for a generic l3 charger, not depended on the current charging speed."
+      },
+      "tokens": [
+        {
+          "type": "number",
+          "name": "fiat_vehicle_measurement_time_to_fully_charge_l3",
+          "title": {
+            "en": "L3 charge time"
+          },
+          "example": "81"
+        }
+      ]
+    }
   ]
 }

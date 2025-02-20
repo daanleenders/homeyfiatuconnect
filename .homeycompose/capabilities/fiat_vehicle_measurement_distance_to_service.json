@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Distance to service"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "icon": "/assets/car-wrench.svg",
+  "insights": true,
+  "units": {
+    "en": "km"
+  },
+  "step": 0.1,
+  "decimals": 1
+}

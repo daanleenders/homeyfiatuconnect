@@ -10,7 +10,11 @@
     "fiat_vehicle_action_lock",
     "fiat_vehicle_action_unlock",
     "fiat_vehicle_action_hvac",
-    "fiat_vehicle_measurement_odometer"
+    "fiat_vehicle_measurement_distance_to_empty",
+    "fiat_vehicle_measurement_distance_to_service",
+    "fiat_vehicle_measurement_odometer",
+    "fiat_vehicle_measurement_time_to_fully_charge_l2",
+    "fiat_vehicle_measurement_time_to_fully_charge_l3"
   ],
   "platforms": [
     "local"

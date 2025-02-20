@@ -1,0 +1,18 @@
+{
+  "type": "number",
+  "title": {
+    "en": "L3 charge time"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "icon": "/assets/ev-plug-ccs2.svg",
+  "insights": true,
+  "units": {
+    "en": "minutes"
+  },
+  "min": 0,
+  "step": 1,
+  "decimals": 0
+}
