@@ -1,0 +1,26 @@
+{
+  "actions": [
+    {
+      "id": "fiat_vehicle_flow_action_hvac",
+      "title": {
+        "en": "Start A/C"
+      },
+      "hint": {
+        "en": "Start the A/C of your vehicle"
+      },
+      "highlight": true
+    },
+    {
+      "id": "fiat_vehicle_flow_action_lock",
+      "title": {
+        "en": "Lock vehicle"
+      }
+    },
+    {
+      "id": "fiat_vehicle_flow_action_unlock",
+      "title": {
+        "en": "Unlock vehicle"
+      }
+    }
+  ]
+}

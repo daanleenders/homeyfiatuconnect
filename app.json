@@ -40,6 +40,53 @@
     "url": "https://github.com/daanleenders/homeyfiatuconnect/issues"
   },
   "source": "https://github.com/daanleenders/homeyfiatuconnect",
+  "flow": {
+    "actions": [
+      {
+        "id": "fiat_vehicle_flow_action_hvac",
+        "title": {
+          "en": "Start A/C"
+        },
+        "hint": {
+          "en": "Start the A/C of your vehicle"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      },
+      {
+        "id": "fiat_vehicle_flow_action_lock",
+        "title": {
+          "en": "Lock vehicle"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      },
+      {
+        "id": "fiat_vehicle_flow_action_unlock",
+        "title": {
+          "en": "Unlock vehicle"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {

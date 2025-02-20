@@ -29,6 +29,7 @@ export default class FiatVehicle extends Homey.Device {
 		await this.updateAvailableCapabilitiesOnInit();
 
 		this.registerRemoteActions();
+		this.registerFlowActionCards();
 
 		this.poller = this.homey.setInterval(
 			this.updateCapabilitiesWithVehicleStatus.bind(this),
@@ -45,7 +46,7 @@ export default class FiatVehicle extends Homey.Device {
 		].forEach(([capability, action]) => {
 			this.registerCapabilityListener(
 				capability,
-				async (value, options) => {
+				async (value) => {
 					if (value !== true) {
 						this.log('value not supported for this capability');
 						return;
@@ -54,6 +55,19 @@ export default class FiatVehicle extends Homey.Device {
 					await this.doRemoteAction(action);
 				},
 			);
+		});
+	}
+
+	registerFlowActionCards() {
+		[
+			['fiat_vehicle_flow_action_hvac', 'hvac'],
+			['fiat_vehicle_flow_action_lock', 'lock'],
+			['fiat_vehicle_flow_action_unlock', 'unlock'],
+		].forEach(([actionCardId, action]) => {
+			const hvacFlow = this.homey.flow.getActionCard(actionCardId);
+			hvacFlow.registerRunListener(async () => {
+				await this.doRemoteAction(action);
+			});
 		});
 	}
 
