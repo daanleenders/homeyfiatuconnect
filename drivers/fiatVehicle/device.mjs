@@ -39,12 +39,9 @@ export default class FiatVehicle extends Homey.Device {
 
 	registerRemoteActions() {
 		[
-			['fiat_vehicle_action_blink_lights', 'blink'],
 			['fiat_vehicle_action_hvac', 'hvac'],
 			['fiat_vehicle_action_lock', 'lock'],
-			['fiat_vehicle_action_lock_trunk', 'trunkLock'],
 			['fiat_vehicle_action_unlock', 'unlock'],
-			['fiat_vehicle_action_unlock_trunk', 'trunkUnlock'],
 		].forEach(([capability, action]) => {
 			this.registerCapabilityListener(
 				capability,
