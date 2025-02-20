@@ -288,7 +288,6 @@ export async function executeRemoteAction(uid, vin, cognitoCredentials, pinToken
 	const data = await response.json();
 
 	if (response.status !== 200) {
-		console.log(data);
 		throw new Error(`FIAT API ERROR: ${data.message}`);
 	}
 
