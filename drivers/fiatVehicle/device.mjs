@@ -166,37 +166,59 @@ export default class FiatVehicle extends Homey.Device {
 		]);
 	}
 
+	convertChartingStatusToChartingState(chargingStatus) {
+		if (chargingStatus === 'CHARGING') {
+			return 'charging';
+		}
+		if (chargingStatus === 'UNKNOWN') {
+			return 'discharging';
+		}
+		return 'idle';
+	}
+
 	async retrieveValidCognitoCredentials() {
 		let cognitoCredentials = this.getStoreValue('cognitoCredentials');
 
 		if (!cognitoCredentialsStillValid(cognitoCredentials)) {
 			this.log('Credentials expired, refreshing');
 
-			const loginResponse = await userLogin(
-				this.getSetting('username'),
-				this.getSetting('password'),
-			);
-			cognitoCredentials = await userRetrieveCognitoCredentials(loginResponse.jwt);
+			const username = this.getSetting('username');
+			const password = this.getSetting('password');
 
-			await this.setStoreValue('cognitoCredentials', cognitoCredentials);
+			cognitoCredentials = await this.refreshLogin(username, password);
 		}
+		return cognitoCredentials;
+	}
+
+	async refreshLogin(username, password) {
+		const loginResponse = await userLogin(username, password);
+		const cognitoCredentials = await userRetrieveCognitoCredentials(loginResponse.jwt);
+
+		await this.setStoreValue('cognitoCredentials', cognitoCredentials);
+
 		return cognitoCredentials;
 	}
 
 	async retrieveValidPinToken(cognitoCredentials, uid) {
 		let pinToken = this.getStoreValue('pinToken');
-		let pinExpiry = this.getStoreValue('pinExpiry');
+		const pinExpiry = this.getStoreValue('pinExpiry');
 
 		if (!pinTokenStillValid(pinExpiry)) {
 			this.log('2FA Token expired, refreshing');
 
 			const pin = this.getSetting('pin');
 
-			[pinToken, pinExpiry] = await twoFactorPinAuthenticate(cognitoCredentials, uid, pin);
-
-			await this.setStoreValue('pinToken', pinToken);
-			await this.setStoreValue('pinExpiry', pinExpiry);
+			pinToken = this.refreshTwoFactorToken(cognitoCredentials, uid, pin);
 		}
+
+		return pinToken;
+	}
+
+	async refreshTwoFactorToken(cognitoCredentials, uid, pin) {
+		const [pinToken, pinExpiry] = await twoFactorPinAuthenticate(cognitoCredentials, uid, pin);
+
+		await this.setStoreValue('pinToken', pinToken);
+		await this.setStoreValue('pinExpiry', pinExpiry);
 
 		return pinToken;
 	}
@@ -221,7 +243,45 @@ export default class FiatVehicle extends Homey.Device {
 		newSettings,
 		changedKeys,
 	}) {
-		this.log('FiatVehicle settings where changed');
+		let loginChanged = false;
+		let pinChanged = false;
+
+		for (const key of changedKeys) {
+			if (key === 'username') {
+				loginChanged = true;
+			} else if (key === 'password') {
+				loginChanged = true;
+			} else if (key === 'pin') {
+				pinChanged = true;
+			}
+		}
+
+		if (!loginChanged && !pinChanged) {
+			return;
+		}
+
+		const uid = this.getStoreValue('uid');
+		let cognitoCredentials = await this.retrieveValidCognitoCredentials();
+
+		if (loginChanged) {
+			try {
+				cognitoCredentials = await this.refreshLogin(newSettings.username, newSettings.password);
+				this.log('New login is correct');
+			} catch (e) {
+				this.log('New login is incorrect');
+				throw new Error('Incorrect PIN');
+			}
+		}
+
+		if (pinChanged) {
+			try {
+				await this.refreshTwoFactorToken(cognitoCredentials, uid, newSettings.pin);
+				this.log('New PIN is correct');
+			} catch (e) {
+				this.log('New PIN is incorrect');
+				throw new Error('Incorrect PIN');
+			}
+		}
 	}
 
 	/**
@@ -230,7 +290,7 @@ export default class FiatVehicle extends Homey.Device {
 	 * @param {string} name The new name
 	 */
 	async onRenamed(name) {
-		this.log('FiatVehicle was renamed');
+		this.log(`FiatVehicle was renamed to ${name}`);
 	}
 
 	/**
@@ -242,16 +302,6 @@ export default class FiatVehicle extends Homey.Device {
 		}
 
 		this.log('FiatVehicle has been deleted');
-	}
-
-	convertChartingStatusToChartingState(chargingStatus) {
-		if (chargingStatus === 'CHARGING') {
-			return 'charging';
-		}
-		if (chargingStatus === 'UNKNOWN') {
-			return 'discharging';
-		}
-		return 'idle';
 	}
 
 }

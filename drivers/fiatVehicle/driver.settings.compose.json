@@ -1,0 +1,44 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Login credentials"
+    },
+    "children": [
+      {
+        "id": "username",
+        "type": "text",
+        "label": {
+          "en": "E-mail address"
+        },
+        "value": "john@doe.com",
+        "hint": {
+          "en": "The email u use to login to the UConnect site/app"
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "label": {
+          "en": "Password"
+        },
+        "value": "secret",
+        "hint": {
+          "en": "The password to login to the UConnect site/app"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pin",
+    "type": "password",
+    "label": {
+      "en": "Security PIN"
+    },
+    "value": "0000",
+    "hint": {
+      "en": "Enter the vehicle's pincode. Used on an action to the vehicle. This is the pin you need to enter when you try to lock/unlock/etc. from the Uconnect site/app."
+    },
+    "pattern": "[0-9]{4}"
+  }
+]
