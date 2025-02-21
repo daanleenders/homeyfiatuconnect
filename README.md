@@ -2,6 +2,8 @@
 
 Connect your FIAT to homey to see its information and control some functions. Needs a car with uconnect services enabled and valid fiat account.
 
+Currently only tested with a Fiat 500e
+
 ## Acknowledgements
 
 Build from the base create new homey app of the [homey cli](https://github.com/athombv/node-homey).
