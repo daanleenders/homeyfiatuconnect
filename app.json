@@ -49,6 +49,16 @@
     "url": "https://github.com/daanleenders/homeyfiatuconnect/issues"
   },
   "source": "https://github.com/daanleenders/homeyfiatuconnect",
+  "contributing": {
+    "donate": {
+      "githubSponsors": {
+        "username": "daanleenders"
+      },
+      "paypal": {
+        "username": "daanleenders"
+      }
+    }
+  },
   "flow": {
     "triggers": [
       {
