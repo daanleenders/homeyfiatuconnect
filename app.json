@@ -306,18 +306,6 @@
     }
   ],
   "capabilities": {
-    "fiat_vehicle_action_blink_lights": {
-      "type": "boolean",
-      "title": {
-        "en": "Blink the lights"
-      },
-      "getable": false,
-      "setable": true,
-      "uiComponent": "button",
-      "uiQuickAction": false,
-      "icon": "/assets/car-parking-lights.svg",
-      "insights": false
-    },
     "fiat_vehicle_action_hvac": {
       "type": "boolean",
       "title": {
@@ -342,18 +330,6 @@
       "icon": "/assets/car-door-lock.svg",
       "insights": false
     },
-    "fiat_vehicle_action_lock_trunk": {
-      "type": "boolean",
-      "title": {
-        "en": "Lock the trunk"
-      },
-      "getable": false,
-      "setable": true,
-      "uiComponent": "button",
-      "uiQuickAction": false,
-      "icon": "/assets/lock-outline.svg",
-      "insights": false
-    },
     "fiat_vehicle_action_unlock": {
       "type": "boolean",
       "title": {
@@ -364,18 +340,6 @@
       "uiComponent": "button",
       "uiQuickAction": false,
       "icon": "/assets/car-door-lock-open.svg",
-      "insights": false
-    },
-    "fiat_vehicle_action_unlock_trunk": {
-      "type": "boolean",
-      "title": {
-        "en": "Unlock the trunk"
-      },
-      "getable": false,
-      "setable": true,
-      "uiComponent": "button",
-      "uiQuickAction": false,
-      "icon": "/assets/lock-open-outline.svg",
       "insights": false
     },
     "fiat_vehicle_measurement_distance_to_empty": {

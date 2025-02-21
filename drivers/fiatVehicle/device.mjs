@@ -79,14 +79,6 @@ export default class FiatVehicle extends Homey.Device {
 
 		let command = null;
 
-		/**
-		 * TODO: Re-add the blink lights, lock/unlock trunk actions. And find out if
-		 * we can find the url for the turn off HVAC.
-		 *
-		 * 'blink' => 'HBLF',
-		 * 'trunkLock' => 'ROTRUNKLOCK',
-		 * 'trunkUnlock' => 'ROTRUNKUNLOCK',
-		 */
 		switch (action) {
 		case 'lock':
 			command = 'RDL';// Lock doors
