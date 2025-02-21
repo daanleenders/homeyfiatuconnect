@@ -281,8 +281,12 @@
           "id": "pincode",
           "template": "pincode",
           "options": {
-            "title": "Enter security PIN",
-            "hint": "Enter the vehicle's pincode",
+            "title": {
+              "en": "Enter security PIN"
+            },
+            "hint": {
+              "en": "Enter the vehicle's pincode"
+            },
             "type": "number",
             "length": 4
           }
