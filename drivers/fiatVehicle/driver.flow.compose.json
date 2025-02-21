@@ -3,23 +3,27 @@
     {
       "id": "fiat_vehicle_flow_action_hvac",
       "title": {
-        "en": "Start A/C"
+        "en": "Start A/C",
+        "nl": "Start A/C"
       },
       "hint": {
-        "en": "Start the A/C of your vehicle"
+        "en": "Start the A/C of your vehicle",
+        "nl": "Start de airconditioning van jouw auto"
       },
       "highlight": true
     },
     {
       "id": "fiat_vehicle_flow_action_lock",
       "title": {
-        "en": "Lock vehicle"
+        "en": "Lock vehicle",
+        "nl": "Vergrendel auto"
       }
     },
     {
       "id": "fiat_vehicle_flow_action_unlock",
       "title": {
-        "en": "Unlock vehicle"
+        "en": "Unlock vehicle",
+        "nl": "Ontgrendel auto"
       }
     }
   ],
@@ -27,17 +31,20 @@
     {
       "id": "fiat_vehicle_measurement_distance_to_empty_changed",
       "title": {
-        "en": "Distance to empty updated"
+        "en": "Distance to empty updated",
+        "nl": "Afstand tot leeg bijgewerkt"
       },
       "hint": {
-        "en": "Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime."
+        "en": "Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime.",
+        "nl": "Gaat af wanneer we een verandering in het batterijniveau detecteren en er een nieuwe afstand tot leeg is berekend. Dit kan gebeuren tijdens het rijden en opladen, maar het kan even duren voor het is bijgewerkt. Verwacht niet dat dit realtime is."
       },
       "tokens": [
         {
           "type": "number",
           "name": "fiat_vehicle_measurement_distance_to_empty",
           "title": {
-            "en": "Distance to empty"
+            "en": "Distance to empty",
+            "nl": "Afstand tot leeg"
           },
           "example": "61"
         }
@@ -46,17 +53,20 @@
     {
       "id": "fiat_vehicle_measurement_distance_to_service_changed",
       "title": {
-        "en": "Distance to service updated"
+        "en": "Distance to service updated",
+        "nl": "Afstand tot service bijgewerkt"
       },
       "hint": {
-        "en": "Triggers when we detect a change to the odometer which means the distance to the next service is also changed. This usually happens at the end of a trip but can happen while driving."
+        "en": "Triggers when we detect a change to the odometer which means the distance to the next service is also changed. This usually happens at the end of a trip but can happen while driving.",
+        "nl": "Gaat af bij een verandering in de kilometerstand waarna de afstand tot de volgende service afspraak ook is veranderd. Dit gebeurt meestal aan het einde van een rit maar kan ook tijdens het rijden veranderen."
       },
       "tokens": [
         {
           "type": "number",
           "name": "fiat_vehicle_measurement_distance_to_service",
           "title": {
-            "en": "Distance to service"
+            "en": "Distance to service",
+            "nl": "Afstand tot service"
           },
           "example": "14279.0"
         }
@@ -65,17 +75,20 @@
     {
       "id": "fiat_vehicle_measurement_odometer_changed",
       "title": {
-        "en": "Odometer updated"
+        "en": "Odometer updated",
+        "nl": "Kilometerstand bijgewerkt"
       },
       "hint": {
-        "en": "Triggers when we detect a change in the odometer. This usually happens at the end of a trip but can happen while driving."
+        "en": "Triggers when we detect a change in the odometer. This usually happens at the end of a trip but can happen while driving.",
+        "nl": "Gaat af bij een verandering in de kilometerstand. Dit gebeurt meestal aan het einde van een rit maar kan ook tijdens het rijden veranderen."
       },
       "tokens": [
         {
           "type": "number",
           "name": "fiat_vehicle_measurement_odometer",
           "title": {
-            "en": "Odometer"
+            "en": "Odometer",
+            "nl": "Kilometerstand"
           },
           "example": "1086"
         }
@@ -84,17 +97,20 @@
     {
       "id": "fiat_vehicle_measurement_time_to_fully_charge_l2_changed",
       "title": {
-        "en": "Time to full on a L2 charger updated"
+        "en": "Time to full battery on a L2 charger updated",
+        "nl": "Tijd tot een volle batterij bij L2 laden bijgewerkt"
       },
       "hint": {
-        "en": "Level 2 are any EV specific AC chargers (your wall charger, public chargers at destinations, etc.). Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime. This is an estimate by your vehicle for a generic l2 charger, not depended on the current charging speed."
+        "en": "Level 2 are any EV specific AC chargers (your wall charger, public chargers at destinations, etc.). Triggers when we detect a change to the battery level and a new time unitll full is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime. This is an estimate by your vehicle for a generic l2 charger, not depended on the current charging speed.",
+        "nl": "Niveau 2 laden gaat over EV specifieke AC laders (je eigen thuislader, publieke laders bij bestemmingen, e.d.). Gaat af wanneer we een verandering in het batterij niveau detecteren en de tijd om de batterij weer volledig op te laden opnieuw wordt berekend. Dit kan gebeuren tijdens het rijden en opladen, maar het kan even duren voor het is bijgewerkt. Verwacht niet dat dit realtime is. Dit is de schatting van uw voertuig voor een generieke l2-lader en is niet afhankelijk van een evt. huidige werkelijke laadsnelheid."
       },
       "tokens": [
         {
           "type": "number",
           "name": "fiat_vehicle_measurement_time_to_fully_charge_l2",
           "title": {
-            "en": "L2 charge time"
+            "en": "L2 charge time",
+            "nl": "L2 oplaadtijd"
           },
           "example": "81"
         }
@@ -103,17 +119,20 @@
     {
       "id": "fiat_vehicle_measurement_time_to_fully_charge_l3_changed",
       "title": {
-        "en": "Time to full on a L3 charger updated"
+        "en": "Time to full on a L3 charger updated",
+        "nl": "Tijd tot een volle batterij bij L3 laden bijgewerkt"
       },
       "hint": {
-        "en": "Level 3 are DC chargers (fastest way to charge, usually used during trips to top up your battery). Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime. This is an estimate by your vehicle for a generic l3 charger, not depended on the current charging speed."
+        "en": "Level 3 are DC chargers (fastest way to charge, usually used during trips to top up your battery). Triggers when we detect a change to the battery level and a new distance until it is empty is calculated. This happens during driving and charging but can take a while to update, do not expect this to be realtime. This is an estimate by your vehicle for a generic l3 charger, not depended on the current charging speed.",
+        "nl": "Niveau 3 laden gaat over DC laders (snelste manier van laden, meestal tijdens een rit weer bijladen). Gaat af wanneer we een verandering in het batterij niveau detecteren en de tijd om de batterij weer volledig op te laden opnieuw wordt berekend. Dit kan gebeuren tijdens het rijden en opladen, maar het kan even duren voor het is bijgewerkt. Verwacht niet dat dit realtime is. Dit is de schatting van uw voertuig voor een generieke l3-lader en is niet afhankelijk van een evt. huidige werkelijke laadsnelheid."
       },
       "tokens": [
         {
           "type": "number",
           "name": "fiat_vehicle_measurement_time_to_fully_charge_l3",
           "title": {
-            "en": "L3 charge time"
+            "en": "L3 charge time",
+            "nl": "L3 oplaadtijd"
           },
           "example": "81"
         }

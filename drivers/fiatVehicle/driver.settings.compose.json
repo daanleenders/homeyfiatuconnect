@@ -2,29 +2,34 @@
   {
     "type": "group",
     "label": {
-      "en": "Login credentials"
+      "en": "Login credentials",
+      "nl": "Inloggegevens"
     },
     "children": [
       {
         "id": "username",
         "type": "text",
         "label": {
-          "en": "E-mail address"
+          "en": "E-mail address",
+          "nl": "E-mailadres"
         },
         "value": "john@doe.com",
         "hint": {
-          "en": "The email u use to login to the UConnect site/app"
+          "en": "The email u use to login to the UConnect site/app",
+          "nl": "Het e-mailadres waarmee je inlog bij de uConnect site/app"
         }
       },
       {
         "id": "password",
         "type": "password",
         "label": {
-          "en": "Password"
+          "en": "Password",
+          "nl": "Wachtwoord"
         },
         "value": "secret",
         "hint": {
-          "en": "The password to login to the UConnect site/app"
+          "en": "The password to login to the UConnect site/app",
+          "nl": "Het wachtwoord waarmee je inlog bij de uConnect site/app"
         }
       }
     ]
@@ -33,11 +38,13 @@
     "id": "pin",
     "type": "password",
     "label": {
-      "en": "Security PIN"
+      "en": "Security PIN",
+      "nl": "Pincode"
     },
     "value": "0000",
     "hint": {
-      "en": "Enter the vehicle's pincode. Used on an action to the vehicle. This is the pin you need to enter when you try to lock/unlock/etc. from the Uconnect site/app."
+      "en": "Enter the vehicle's pincode. Used on an action to the vehicle. This is the pin you need to enter when you try to lock/unlock/etc. from the Uconnect site/app.",
+      "nl": "Vul de pincode in van het voertuig. Die wordt gebruikt om een actie op het voertuig uit te voeren vanuit de uconnect site/app zoals het vergrendelen of ongrendelen van het voertuig"
     },
     "pattern": "[0-9]{4}"
   }

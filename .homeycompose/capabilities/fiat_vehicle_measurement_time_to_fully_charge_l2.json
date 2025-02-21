@@ -1,7 +1,8 @@
 {
   "type": "number",
   "title": {
-    "en": "L2 charge time"
+    "en": "L2 charge time",
+    "nl": "L2 oplaadtijd"
   },
   "getable": true,
   "setable": false,
@@ -10,7 +11,8 @@
   "icon": "/assets/ev-plug-type2.svg",
   "insights": true,
   "units": {
-    "en": "minutes"
+    "en": "minutes",
+    "nl": "minuten"
   },
   "min": 0,
   "step": 1,

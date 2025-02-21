@@ -8,10 +8,12 @@
   "sdk": 3,
   "brandColor": "#d13640",
   "name": {
-    "en": "Fiat UConnect"
+    "en": "Fiat UConnect",
+    "nl": "Fiat UConnect"
   },
   "description": {
-    "en": "Connect your FIAT to homey to see its information and control some functions"
+    "en": "Connect your FIAT to Homey to see its information and control some functions",
+    "nl": "Verbind jouw FIAT met Homey om er informatie van te kunnen zien en sommige functies te bedienen"
   },
   "category": [
     "internet"
@@ -21,6 +23,13 @@
       "car",
       "ev",
       "Electric Vehicle",
+      "Fiat",
+      "UConnect"
+    ],
+    "nl": [
+      "auto",
+      "ev",
+      "Elektrisch Voertuig",
       "Fiat",
       "UConnect"
     ]

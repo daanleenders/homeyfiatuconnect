@@ -1,7 +1,8 @@
 {
   "type": "number",
   "title": {
-    "en": "Odometer"
+    "en": "Odometer",
+    "nl": "Kilometerstand"
   },
   "getable": true,
   "setable": false,
@@ -10,7 +11,8 @@
   "icon": "/assets/counter.svg",
   "insights": true,
   "units": {
-    "en": "km"
+    "en": "km",
+    "nl": "km"
   },
   "min": 0,
   "step": 1,

@@ -1,7 +1,8 @@
 {
   "type": "number",
   "title": {
-    "en": "L3 charge time"
+    "en": "L3 charge time",
+    "nl": "L3 oplaadtijd"
   },
   "getable": true,
   "setable": false,
@@ -10,7 +11,8 @@
   "icon": "/assets/ev-plug-ccs2.svg",
   "insights": true,
   "units": {
-    "en": "minutes"
+    "en": "minutes",
+    "nl": "minuten"
   },
   "min": 0,
   "step": 1,

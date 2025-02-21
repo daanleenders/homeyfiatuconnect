@@ -1,6 +1,7 @@
 {
   "name": {
-    "en": "Fiat"
+    "en": "Fiat",
+    "nl": "Fiat"
   },
   "class": "car",
   "capabilities": [
@@ -39,19 +40,24 @@
       "options": {
         "logo": "icon.svg",
         "title": {
-          "en": "Login with your uConnect credentials"
+          "en": "Login with your uConnect credentials",
+          "nl": "Login met jouw uConnect gegevens"
         },
         "usernameLabel": {
-          "en": "E-mail address"
+          "en": "E-mail address",
+          "nl": "E-mailadres"
         },
         "usernamePlaceholder": {
-          "en": "john@doe.com"
+          "en": "john@doe.com",
+          "nl": "jan@jansen.nl"
         },
         "passwordLabel": {
-          "en": "Password"
+          "en": "Password",
+          "nl": "Wachtwoord"
         },
         "passwordPlaceholder": {
-          "en": "Password"
+          "en": "Password",
+          "nl": "Wachtwoord"
         }
       }
     },
@@ -60,10 +66,12 @@
       "template": "pincode",
       "options": {
         "title": {
-          "en": "Enter security PIN"
+          "en": "Enter security PIN",
+          "nl": "Voer de pincode in"
         },
         "hint": {
-          "en": "Enter the vehicle's pincode"
+          "en": "Enter the pincode that gets asked when you lock the car from the Fiat uConnect site or app",
+          "nl": "De pincode waar om wordt gevraagd als je jouw auto vergrendeld vanuit de Fiat uConnect site of app"
         },
         "type": "number",
         "length": 4

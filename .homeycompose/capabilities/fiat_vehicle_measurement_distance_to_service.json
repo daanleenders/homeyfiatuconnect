@@ -1,7 +1,8 @@
 {
   "type": "number",
   "title": {
-    "en": "Distance to service"
+    "en": "Distance to service",
+    "nl": "Afstand tot service"
   },
   "getable": true,
   "setable": false,
@@ -10,7 +11,8 @@
   "icon": "/assets/car-wrench.svg",
   "insights": true,
   "units": {
-    "en": "km"
+    "en": "km",
+    "nl": "km"
   },
   "step": 0.1,
   "decimals": 1
