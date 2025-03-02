@@ -1,5 +1,8 @@
 {
   "1.0.0": {
     "en": "First release of the Fiat app with ev battery status, (un)lock and A/C actions and some usefull measurements from the UConnect API."
+  },
+  "1.0.1": {
+    "en": "updated app to adhere to app store guidelines and feedback of homey"
   }
 }
