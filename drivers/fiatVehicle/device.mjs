@@ -144,6 +144,10 @@ export default class FiatVehicle extends Homey.Device {
 				this.convertChartingStatusToChartingState(battery.chargingStatus),
 			),
 			this.setCapabilityValue(
+				'docked',
+				battery.plugInStatus,
+			),
+			this.setCapabilityValue(
 				'fiat_vehicle_measurement_distance_to_empty',
 				Math.round(vehicleStatus.vehicleInfo.fuel.distanceToEmpty.value),
 			),

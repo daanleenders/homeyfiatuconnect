@@ -268,6 +268,7 @@
         "measure_battery",
         "alarm_battery",
         "battery_charging_state",
+        "docked",
         "fiat_vehicle_action_lock",
         "fiat_vehicle_action_unlock",
         "fiat_vehicle_action_hvac",
