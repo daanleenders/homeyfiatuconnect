@@ -148,6 +148,10 @@ export default class FiatVehicle extends Homey.Device {
 				battery.plugInStatus,
 			),
 			this.setCapabilityValue(
+				'fiat_vehicle_state_charging_level',
+				battery.chargingLevel,
+			),
+			this.setCapabilityValue(
 				'fiat_vehicle_measurement_distance_to_empty',
 				Math.round(vehicleStatus.vehicleInfo.fuel.distanceToEmpty.value),
 			),

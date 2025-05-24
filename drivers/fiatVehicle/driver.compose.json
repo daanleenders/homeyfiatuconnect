@@ -8,7 +8,6 @@
     "measure_battery",
     "alarm_battery",
     "battery_charging_state",
-    "docked",
     "fiat_vehicle_action_lock",
     "fiat_vehicle_action_unlock",
     "fiat_vehicle_action_hvac",
@@ -16,7 +15,9 @@
     "fiat_vehicle_measurement_distance_to_service",
     "fiat_vehicle_measurement_odometer",
     "fiat_vehicle_measurement_time_to_fully_charge_l2",
-    "fiat_vehicle_measurement_time_to_fully_charge_l3"
+    "fiat_vehicle_measurement_time_to_fully_charge_l3",
+    "fiat_vehicle_state_plugged_in",
+    "fiat_vehicle_state_charging_level"
   ],
   "platforms": [
     "local"

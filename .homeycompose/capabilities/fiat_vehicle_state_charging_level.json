@@ -1,0 +1,42 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Charging level",
+    "nl": "Oplaadniveau"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/chargespeed.svg",
+  "insights": true,
+  "values": [
+    {
+      "id": "LEVEL_1",
+      "title": {
+        "en": "Level 1",
+        "nl": "Niveau 1"
+      }
+    },
+    {
+      "id": "LEVEL_2",
+      "title": {
+        "en": "Level 2",
+        "nl": "Niveau 2"
+      }
+    },
+    {
+      "id": "LEVEL_3",
+      "title": {
+        "en": "Level 3",
+        "nl": "Niveau 3"
+      }
+    },
+    {
+      "id": "DEFAULT",
+      "title": {
+        "en": "-",
+        "nl": "-"
+      }
+    }
+  ]
+}

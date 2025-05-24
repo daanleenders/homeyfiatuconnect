@@ -268,7 +268,6 @@
         "measure_battery",
         "alarm_battery",
         "battery_charging_state",
-        "docked",
         "fiat_vehicle_action_lock",
         "fiat_vehicle_action_unlock",
         "fiat_vehicle_action_hvac",
@@ -276,7 +275,9 @@
         "fiat_vehicle_measurement_distance_to_service",
         "fiat_vehicle_measurement_odometer",
         "fiat_vehicle_measurement_time_to_fully_charge_l2",
-        "fiat_vehicle_measurement_time_to_fully_charge_l3"
+        "fiat_vehicle_measurement_time_to_fully_charge_l3",
+        "fiat_vehicle_state_plugged_in",
+        "fiat_vehicle_state_charging_level"
       ],
       "platforms": [
         "local"
@@ -545,6 +546,69 @@
       "min": 0,
       "step": 1,
       "decimals": 0
+    },
+    "fiat_vehicle_state_charging_level": {
+      "type": "enum",
+      "title": {
+        "en": "Charging level",
+        "nl": "Oplaadniveau"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/chargespeed.svg",
+      "insights": true,
+      "values": [
+        {
+          "id": "LEVEL_1",
+          "title": {
+            "en": "Level 1",
+            "nl": "Niveau 1"
+          }
+        },
+        {
+          "id": "LEVEL_2",
+          "title": {
+            "en": "Level 2",
+            "nl": "Niveau 2"
+          }
+        },
+        {
+          "id": "LEVEL_3",
+          "title": {
+            "en": "Level 3",
+            "nl": "Niveau 3"
+          }
+        },
+        {
+          "id": "DEFAULT",
+          "title": {
+            "en": "-",
+            "nl": "-"
+          }
+        }
+      ]
+    },
+    "fiat_vehicle_state_plugged_in": {
+      "type": "boolean",
+      "title": {
+        "en": "Cable plugged in",
+        "nl": "Oplaadkabel aangesloten"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/pluggedin.svg",
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Plugged in",
+        "nl": "Aangesloten"
+      },
+      "insightsTitleFalse": {
+        "en": "Not plugged in",
+        "nl": "Niet aangesloten"
+      }
     }
   }
 }
