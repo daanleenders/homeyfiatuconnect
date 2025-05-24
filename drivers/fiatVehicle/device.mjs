@@ -144,7 +144,7 @@ export default class FiatVehicle extends Homey.Device {
 				this.convertChartingStatusToChartingState(battery.chargingStatus),
 			),
 			this.setCapabilityValue(
-				'docked',
+				'fiat_vehicle_state_plugged_in',
 				battery.plugInStatus,
 			),
 			this.setCapabilityValue(

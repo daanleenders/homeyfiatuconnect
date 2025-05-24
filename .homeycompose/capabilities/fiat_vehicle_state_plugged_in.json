@@ -1,0 +1,21 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Cable plugged in",
+    "nl": "Oplaadkabel aangesloten"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "icon": "/assets/pluggedin.svg",
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Plugged in",
+    "nl": "Aangesloten"
+  },
+  "insightsTitleFalse": {
+    "en": "Not plugged in",
+    "nl": "Niet aangesloten"
+  }
+}
