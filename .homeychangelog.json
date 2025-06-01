@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "updated app to adhere to app store guidelines and feedback of homey"
+  },
+  "1.1.0": {
+    "en": "Added capabilities and accompanying flows for the plugged in status and the capability of the charger connected to the vehicle"
   }
 }
