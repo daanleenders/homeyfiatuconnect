@@ -69,6 +69,17 @@ export default class FiatVehicle extends Homey.Device {
 				await this.doRemoteAction(action);
 			});
 		});
+
+		const chargingLevelConditionFlow = this.homey.flow.getConditionCard('fiat_vehicle_state_charging_level_condition');
+		chargingLevelConditionFlow.registerRunListener(async (args) => {
+			const { device, level } = args;
+			return device.getState().fiat_vehicle_state_charging_level === level;
+		});
+
+		const pluggedInConditionFlow = this.homey.flow.getConditionCard('fiat_vehicle_state_plugged_in_condition');
+		pluggedInConditionFlow.registerRunListener(async (args) => {
+			return args.device.getState().fiat_vehicle_state_plugged_in;
+		});
 	}
 
 	doRemoteAction = async (action) => {
@@ -142,6 +153,14 @@ export default class FiatVehicle extends Homey.Device {
 			this.setCapabilityValue(
 				'battery_charging_state',
 				this.convertChartingStatusToChartingState(battery.chargingStatus),
+			),
+			this.setCapabilityValue(
+				'fiat_vehicle_state_plugged_in',
+				battery.plugInStatus,
+			),
+			this.setCapabilityValue(
+				'fiat_vehicle_state_charging_level',
+				battery.chargingLevel,
 			),
 			this.setCapabilityValue(
 				'fiat_vehicle_measurement_distance_to_empty',
