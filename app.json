@@ -205,6 +205,138 @@
             "filter": "driver_id=fiatVehicle"
           }
         ]
+      },
+      {
+        "id": "fiat_vehicle_state_charging_level_changed",
+        "title": {
+          "en": "The charging level (L1, L2, L3) changed",
+          "nl": "Het niveau waarmee geladen kan worden veranderd"
+        },
+        "hint": {
+          "en": "This changes when you plugin a charging cable and will contain the charging level provided by that cable. Level 1 is a regular socket, Level 2 are EV specific AC chargers, and Level 3 are DC (high speed) chargers.",
+          "nl": "Dit veranderd als je een laadkabel inplugt en bevat het niveau waarmee deze kabel kan laden . Niveau 1 is een standaard stopcontact, Niveau 2 zijn EV specifieke AC laders, en Niveau 3 laden gaat over DC (snel)laders."
+        },
+        "tokens": [
+          {
+            "type": "string",
+            "name": "fiat_vehicle_state_charging_level",
+            "title": {
+              "en": "Charging level",
+              "nl": "Oplaadniveau"
+            },
+            "example": {
+              "en": "Level 2",
+              "nl": "Niveau 2"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      },
+      {
+        "id": "fiat_vehicle_state_plugged_in_true",
+        "title": {
+          "en": "A charging cable is plugged in",
+          "nl": "Een Laadkabel is aangesloten"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      },
+      {
+        "id": "fiat_vehicle_state_plugged_in_false",
+        "title": {
+          "en": "The charging cable is removed",
+          "nl": "De laadkabel is los gehaald"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "fiat_vehicle_state_charging_level_condition",
+        "title": {
+          "en": "The charging level !{{is|isn't}} ...",
+          "nl": "Het laadniveau is !{{|niet }}..."
+        },
+        "titleFormatted": {
+          "en": "The charging level !{{is|isn't}} [[level]]",
+          "nl": "Het laadniveau is !{{|niet }}[[level]]"
+        },
+        "hint": {
+          "en": "Level 1 is a regular socket, Level 2 are EV specific AC chargers, and Level 3 are DC (high speed) chargers.",
+          "nl": "Niveau 1 is een standaard stopcontact, Niveau 2 zijn EV specifieke AC laders, en Niveau 3 laden gaat over DC (snel)laders."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          },
+          {
+            "name": "level",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "LEVEL_1",
+                "label": {
+                  "en": "Level 1",
+                  "nl": "Niveau 1"
+                }
+              },
+              {
+                "id": "LEVEL_2",
+                "label": {
+                  "en": "Level 2",
+                  "nl": "Niveau 2"
+                }
+              },
+              {
+                "id": "LEVEL_3",
+                "label": {
+                  "en": "Level 3",
+                  "nl": "Niveau 3"
+                }
+              },
+              {
+                "id": "DEFAULT",
+                "label": {
+                  "en": "-",
+                  "nl": "-"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fiat_vehicle_state_plugged_in_condition",
+        "title": {
+          "en": "A charging cable !{{is|isn't}} plugged in",
+          "nl": "Een Laadkabel is !{{|niet }}aangesloten"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          }
+        ]
       }
     ],
     "actions": [
