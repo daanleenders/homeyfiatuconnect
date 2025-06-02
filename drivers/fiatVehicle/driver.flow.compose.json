@@ -168,14 +168,16 @@
       "title": {
         "en": "A charging cable is plugged in",
         "nl": "Een Laadkabel is aangesloten"
-      }
+      },
+      "deprecated": true
     },
     {
       "id": "fiat_vehicle_state_plugged_in_false",
       "title": {
         "en": "The charging cable is removed",
         "nl": "De laadkabel is los gehaald"
-      }
+      },
+      "deprecated": true
     }
   ],
   "conditions": [
@@ -235,7 +237,8 @@
       "title": {
         "en": "A charging cable !{{is|isn't}} plugged in",
         "nl": "Een Laadkabel is !{{|niet }}aangesloten"
-      }
+      },
+      "deprecated": true
     }
   ]
 }

@@ -6,10 +6,10 @@
   },
   "getable": true,
   "setable": false,
-  "uiComponent": "sensor",
+  "uiComponent": null,
   "uiQuickAction": false,
   "icon": "/assets/pluggedin.svg",
-  "insights": true,
+  "insights": false,
   "insightsTitleTrue": {
     "en": "Plugged in",
     "nl": "Aangesloten"
