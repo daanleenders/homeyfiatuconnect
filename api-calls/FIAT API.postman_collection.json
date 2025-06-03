@@ -1,593 +1,660 @@
 {
-  "info": {
-    "_postman_id": "bfb39d68-c253-437c-aa38-437bd4c80c2a",
-    "name": "FIAT API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "41263526"
-  },
-  "item": [
-    {
-      "name": "Login",
-      "item": [
-        {
-          "name": "1. Start cookie",
-          "protocolProfileBehavior": {
-            "disabledSystemHeaders": {}
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "https://loginmyuconnect.fiat.com/accounts.webSdkBootstrap?apiKey={{fiatApiKey}}",
-              "protocol": "https",
-              "host": [
-                "loginmyuconnect",
-                "fiat",
-                "com"
-              ],
-              "path": [
-                "accounts.webSdkBootstrap"
-              ],
-              "query": [
-                {
-                  "key": "apiKey",
-                  "value": "{{fiatApiKey}}"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "2. Actual Login",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "\r",
-                  "pm.environment.set(\"loginUID\", jsonData.UID);\r",
-                  "pm.environment.set(\"loginToken\", jsonData.sessionInfo.login_token);"
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "key": "loginId",
-                  "value": "{{loginUser}}",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "{{loginPassword}}",
-                  "type": "text"
-                },
-                {
-                  "key": "sessionExpiration",
-                  "value": "7776000",
-                  "type": "text"
-                },
-                {
-                  "key": "APIKey",
-                  "value": "{{fiatApiKey}}",
-                  "type": "text"
-                },
-                {
-                  "key": "pageUrl",
-                  "value": "https%3A%2F%2Fmyuconnect.fiat.com%2Fde%2Fde%2Flogin",
-                  "type": "text"
-                },
-                {
-                  "key": "sdk",
-                  "value": "js_latest",
-                  "type": "text"
-                },
-                {
-                  "key": "sdkBuild",
-                  "value": "1234",
-                  "type": "text"
-                },
-                {
-                  "key": "format",
-                  "value": "json",
-                  "type": "text"
-                },
-                {
-                  "key": "targetEnv",
-                  "value": "jssdk",
-                  "type": "text"
-                },
-                {
-                  "key": "include",
-                  "value": "profile%2Cdata%2Cemails%2Csubscriptions%2Cpreferences",
-                  "type": "text"
-                },
-                {
-                  "key": "includeUserInfo",
-                  "value": "true",
-                  "type": "text"
-                },
-                {
-                  "key": "loginMode",
-                  "value": "standard",
-                  "type": "text"
-                },
-                {
-                  "key": "lang",
-                  "value": "de0de",
-                  "type": "text"
-                },
-                {
-                  "key": "source",
-                  "value": "showScreenSet",
-                  "type": "text"
-                },
-                {
-                  "key": "authMode",
-                  "value": "cookie",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "https://loginmyuconnect.fiat.com/accounts.login",
-              "protocol": "https",
-              "host": [
-                "loginmyuconnect",
-                "fiat",
-                "com"
-              ],
-              "path": [
-                "accounts.login"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "3. Login to JWT",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "\r",
-                  "pm.environment.set(\"JWT\", jsonData.id_token);"
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "https://loginmyuconnect.fiat.com/accounts.getJWT?APIKey={{fiatApiKey}}&pageUrl=https://myuconnect.fiat.com/de/de/login&sdk=js_latest&sdkBuild=1234&format=json&login_token={{loginToken}}&authMode=cookie&fields=profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP",
-              "protocol": "https",
-              "host": [
-                "loginmyuconnect",
-                "fiat",
-                "com"
-              ],
-              "path": [
-                "accounts.getJWT"
-              ],
-              "query": [
-                {
-                  "key": "APIKey",
-                  "value": "{{fiatApiKey}}"
-                },
-                {
-                  "key": "pageUrl",
-                  "value": "https://myuconnect.fiat.com/de/de/login"
-                },
-                {
-                  "key": "sdk",
-                  "value": "js_latest"
-                },
-                {
-                  "key": "sdkBuild",
-                  "value": "1234"
-                },
-                {
-                  "key": "format",
-                  "value": "json"
-                },
-                {
-                  "key": "login_token",
-                  "value": "{{loginToken}}"
-                },
-                {
-                  "key": "authMode",
-                  "value": "cookie"
-                },
-                {
-                  "key": "fields",
-                  "value": "profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "4. Login to Cognito",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "\r",
-                  "pm.environment.set(\"awsAuthIdentityId\", jsonData.IdentityId);\r",
-                  "pm.environment.set(\"awsAuthToken\", jsonData.Token);"
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disabledSystemHeaders": {
-              "user-agent": true
-            }
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-Api-Key",
-                "value": "{{awsAuthApiKey}}",
-                "type": "text"
-              },
-              {
-                "key": "x-clientapp-version",
-                "value": " 1.0",
-                "type": "text"
-              },
-              {
-                "key": "x-originator-type",
-                "value": " web",
-                "type": "text"
-              },
-              {
-                "key": "x-clientapp-name",
-                "value": " CWP",
-                "type": "text"
-              },
-              {
-                "key": "clientrequestid",
-                "value": "{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"gigya_token\": \"{{JWT}}\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "https://authz.sdpr-01.fcagcv.com/v2/cognito/identity/token",
-              "protocol": "https",
-              "host": [
-                "authz",
-                "sdpr-01",
-                "fcagcv",
-                "com"
-              ],
-              "path": [
-                "v2",
-                "cognito",
-                "identity",
-                "token"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "5. Exchange Cognito Token for Credentials",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "\r",
-                  "pm.environment.set(\"awsCredentialsAccessKeyId\", jsonData.Credentials.AccessKeyId);\r",
-                  "pm.environment.set(\"awsCredentialsExpiration\", jsonData.Credentials.Expiration);\r",
-                  "pm.environment.set(\"awsCredentialsSecretKey\", jsonData.Credentials.SecretKey);\r",
-                  "pm.environment.set(\"awsCredentialsSessionToken\", jsonData.Credentials.SessionToken);"
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-AMZ-TARGET",
-                "value": " com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.GetCredentialsForIdentity",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": " application/x-amz-json-1.1",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"IdentityId\": \"{{awsAuthIdentityId}}\",\r\n  \"Logins\": {\r\n    \"cognito-identity.amazonaws.com\": \"{{awsAuthToken}}\"\r\n  }\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "https://cognito-identity.{{awsRegion}}.amazonaws.com/",
-              "protocol": "https",
-              "host": [
-                "cognito-identity",
-                "{{awsRegion}}",
-                "amazonaws",
-                "com"
-              ],
-              "path": [
-                ""
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Authenticated",
-      "item": [
-        {
-          "name": "GET vehicles",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "const vehicle = jsonData.vehicles[0];\r",
-                  "\r",
-                  "pm.environment.set(\"vehicleVIN\", vehicle.vin);\r",
-                  "pm.environment.set(\"vehicleMake\", vehicle.make);\r",
-                  "pm.environment.set(\"vehicleModelDescription\", vehicle.modelDescription);\r",
-                  "pm.environment.set(\"vehicleNickname\", vehicle.nickname);"
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{apiUrl}}/v4/accounts/{{loginUID}}/vehicles?stage=ALL",
-              "host": [
-                "{{apiUrl}}"
-              ],
-              "path": [
-                "v4",
-                "accounts",
-                "{{loginUID}}",
-                "vehicles"
-              ],
-              "query": [
-                {
-                  "key": "stage",
-                  "value": "ALL"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GET Vehicle status",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{apiUrl}}/v4/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/status",
-              "host": [
-                "{{apiUrl}}"
-              ],
-              "path": [
-                "v4",
-                "accounts",
-                "{{loginUID}}",
-                "vehicles",
-                "{{vehicleVIN}}",
-                "status"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Start Climate Control",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"command\": \"RDU\",\r\n    \"pinAuth\": \"{{2FaToken}}\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{apiUrl}}/v1/accounts/{{loginUID}}vehicles/{{vehicleVIN}}/remote",
-              "host": [
-                "{{apiUrl}}"
-              ],
-              "path": [
-                "v1",
-                "accounts",
-                "{{loginUID}}vehicles",
-                "{{vehicleVIN}}",
-                "remote"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "PIN authenticate",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "\r",
-                  "pm.environment.set(\"2FaToken\", jsonData.token);"
-                ],
-                "type": "text/javascript",
-                "packages": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "x-api-key",
-                "value": "{{2FaApiKey}}",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"pin\": \"NzU5OQ==\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{2FaUrl}}/v1/accounts/{{loginUID}}/ignite/pin/authenticate",
-              "host": [
-                "{{2FaUrl}}"
-              ],
-              "path": [
-                "v1",
-                "accounts",
-                "{{loginUID}}",
-                "ignite",
-                "pin",
-                "authenticate"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "auth": {
-        "type": "awsv4",
-        "awsv4": [
-          {
-            "key": "service",
-            "value": "execute-api",
-            "type": "string"
-          },
-          {
-            "key": "sessionToken",
-            "value": "{{awsCredentialsSessionToken}}",
-            "type": "string"
-          },
-          {
-            "key": "region",
-            "value": "{{awsRegion}}",
-            "type": "string"
-          },
-          {
-            "key": "secretKey",
-            "value": "{{awsCredentialsSecretKey}}",
-            "type": "string"
-          },
-          {
-            "key": "accessKey",
-            "value": "{{awsCredentialsAccessKeyId}}",
-            "type": "string"
-          }
-        ]
-      },
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "type": "text/javascript",
-            "packages": {},
-            "exec": [
-              "pm.request.headers.add({\r",
-              "  key: 'x-originator-type',\r",
-              "  value: 'web'\r",
-              "});\r",
-              "pm.request.headers.add({\r",
-              "  key: 'x-clientapp-version',\r",
-              "  value: '1.0'\r",
-              "});\r",
-              "pm.request.headers.add({\r",
-              "  key: 'Locale',\r",
-              "  value: 'de_de'\r",
-              "});\r",
-              "pm.request.headers.add({\r",
-              "  key: 'Content-Type',\r",
-              "  value: 'application/json'\r",
-              "});\r",
-              "if(!pm.request.headers.get('X-Api-Key')) {\r",
-              "pm.request.headers.add({\r",
-              "  key: 'X-Api-Key',\r",
-              "  value: pm.environment.get(\"awsAuthApiKey\")\r",
-              "});\r",
-              "}\r",
-              "pm.request.headers.add({\r",
-              "  key: 'clientrequestid',\r",
-              "  value: pm.variables.replaceIn('{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}')\r",
-              "});"
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "packages": {},
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "2f047c57-beaa-4ce0-82c5-135d3310a98b",
+		"name": "FIAT API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41263526"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "1. Start cookie",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://loginmyuconnect.fiat.com/accounts.webSdkBootstrap?apiKey={{fiatApiKey}}",
+							"protocol": "https",
+							"host": [
+								"loginmyuconnect",
+								"fiat",
+								"com"
+							],
+							"path": [
+								"accounts.webSdkBootstrap"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "{{fiatApiKey}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Actual Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"loginUID\", jsonData.UID);\r",
+									"pm.environment.set(\"loginToken\", jsonData.sessionInfo.login_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "loginId",
+									"value": "{{loginUser}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{loginPassword}}",
+									"type": "text"
+								},
+								{
+									"key": "sessionExpiration",
+									"value": "7776000",
+									"type": "text"
+								},
+								{
+									"key": "APIKey",
+									"value": "{{fiatApiKey}}",
+									"type": "text"
+								},
+								{
+									"key": "pageUrl",
+									"value": "https%3A%2F%2Fmyuconnect.fiat.com%2Fde%2Fde%2Flogin",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sdk",
+									"value": "js_latest",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sdkBuild",
+									"value": "1234",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "targetEnv",
+									"value": "jssdk",
+									"type": "text"
+								},
+								{
+									"key": "include",
+									"value": "profile",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "includeUserInfo",
+									"value": "true",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "loginMode",
+									"value": "standard",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lang",
+									"value": "de0de",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "source",
+									"value": "showScreenSet",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "authMode",
+									"value": "cookie",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://loginmyuconnect.fiat.com/accounts.login",
+							"protocol": "https",
+							"host": [
+								"loginmyuconnect",
+								"fiat",
+								"com"
+							],
+							"path": [
+								"accounts.login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Login to JWT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"JWT\", jsonData.id_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://loginmyuconnect.fiat.com/accounts.getJWT?APIKey={{fiatApiKey}}&login_token={{loginToken}}&fields=profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP",
+							"protocol": "https",
+							"host": [
+								"loginmyuconnect",
+								"fiat",
+								"com"
+							],
+							"path": [
+								"accounts.getJWT"
+							],
+							"query": [
+								{
+									"key": "APIKey",
+									"value": "{{fiatApiKey}}"
+								},
+								{
+									"key": "pageUrl",
+									"value": "https://myuconnect.fiat.com/de/de/login",
+									"disabled": true
+								},
+								{
+									"key": "sdk",
+									"value": "js_latest",
+									"disabled": true
+								},
+								{
+									"key": "sdkBuild",
+									"value": "1234",
+									"disabled": true
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"disabled": true
+								},
+								{
+									"key": "login_token",
+									"value": "{{loginToken}}"
+								},
+								{
+									"key": "authMode",
+									"value": "cookie",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Login to Cognito",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"awsAuthIdentityId\", jsonData.IdentityId);\r",
+									"pm.environment.set(\"awsAuthToken\", jsonData.Token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{awsAuthApiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "x-clientapp-version",
+								"value": " 1.0",
+								"type": "text"
+							},
+							{
+								"key": "x-originator-type",
+								"value": " web",
+								"type": "text"
+							},
+							{
+								"key": "x-clientapp-name",
+								"value": " CWP",
+								"type": "text"
+							},
+							{
+								"key": "clientrequestid",
+								"value": "{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gigya_token\": \"{{JWT}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://authz.sdpr-01.fcagcv.com/v2/cognito/identity/token",
+							"protocol": "https",
+							"host": [
+								"authz",
+								"sdpr-01",
+								"fcagcv",
+								"com"
+							],
+							"path": [
+								"v2",
+								"cognito",
+								"identity",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Exchange Cognito Token for Credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"awsCredentialsAccessKeyId\", jsonData.Credentials.AccessKeyId);\r",
+									"pm.environment.set(\"awsCredentialsExpiration\", jsonData.Credentials.Expiration);\r",
+									"pm.environment.set(\"awsCredentialsSecretKey\", jsonData.Credentials.SecretKey);\r",
+									"pm.environment.set(\"awsCredentialsSessionToken\", jsonData.Credentials.SessionToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AMZ-TARGET",
+								"value": " com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.GetCredentialsForIdentity",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": " application/x-amz-json-1.1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"IdentityId\": \"{{awsAuthIdentityId}}\",\r\n  \"Logins\": {\r\n    \"cognito-identity.amazonaws.com\": \"{{awsAuthToken}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cognito-identity.{{awsRegion}}.amazonaws.com/",
+							"protocol": "https",
+							"host": [
+								"cognito-identity",
+								"{{awsRegion}}",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authenticated",
+			"item": [
+				{
+					"name": "Actions",
+					"item": [
+						{
+							"name": "0. PIN authenticate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.environment.set(\"2FaToken\", jsonData.token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{2FaApiKey}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pin\": \"NzU5OQ==\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{2FaUrl}}/v1/accounts/{{loginUID}}/ignite/pin/authenticate",
+									"host": [
+										"{{2FaUrl}}"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{loginUID}}",
+										"ignite",
+										"pin",
+										"authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Start Climate Control",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"command\": \"RDU\",\r\n    \"pinAuth\": \"{{2FaToken}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/v1/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/remote",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"v1",
+										"accounts",
+										"{{loginUID}}",
+										"vehicles",
+										"{{vehicleVIN}}",
+										"remote"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GET vehicles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const vehicle = jsonData.vehicles[0];\r",
+									"\r",
+									"pm.environment.set(\"vehicleVIN\", vehicle.vin);\r",
+									"pm.environment.set(\"vehicleMake\", vehicle.make);\r",
+									"pm.environment.set(\"vehicleModelDescription\", vehicle.modelDescription);\r",
+									"pm.environment.set(\"vehicleNickname\", vehicle.nickname);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/v4/accounts/{{loginUID}}/vehicles?stage=ALL",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"v4",
+								"accounts",
+								"{{loginUID}}",
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "stage",
+									"value": "ALL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Vehicle status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/v4/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/status",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"v4",
+								"accounts",
+								"{{loginUID}}",
+								"vehicles",
+								"{{vehicleVIN}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Vehicle location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/v1/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/location/lastknown",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"{{loginUID}}",
+								"vehicles",
+								"{{vehicleVIN}}",
+								"location",
+								"lastknown"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Vehicle remote status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/v1/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/remote/status",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"v1",
+								"accounts",
+								"{{loginUID}}",
+								"vehicles",
+								"{{vehicleVIN}}",
+								"remote",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "awsv4",
+				"awsv4": [
+					{
+						"key": "service",
+						"value": "execute-api",
+						"type": "string"
+					},
+					{
+						"key": "sessionToken",
+						"value": "{{awsCredentialsSessionToken}}",
+						"type": "string"
+					},
+					{
+						"key": "region",
+						"value": "{{awsRegion}}",
+						"type": "string"
+					},
+					{
+						"key": "secretKey",
+						"value": "{{awsCredentialsSecretKey}}",
+						"type": "string"
+					},
+					{
+						"key": "accessKey",
+						"value": "{{awsCredentialsAccessKeyId}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"pm.request.headers.add({\r",
+							"  key: 'x-originator-type',\r",
+							"  value: 'web'\r",
+							"});\r",
+							"pm.request.headers.add({\r",
+							"  key: 'X-ClientApp-version',\r",
+							"  value: '1.0'\r",
+							"});\r",
+							"pm.request.headers.add({\r",
+							"  key: 'Locale',\r",
+							"  value: 'de_de'\r",
+							"});\r",
+							"pm.request.headers.add({\r",
+							"  key: 'Content-Type',\r",
+							"  value: 'application/json'\r",
+							"});\r",
+							"if(!pm.request.headers.get('X-Api-Key')) {\r",
+							"pm.request.headers.add({\r",
+							"  key: 'X-Api-Key',\r",
+							"  value: pm.environment.get(\"awsAuthApiKey\")\r",
+							"});\r",
+							"}\r",
+							"pm.request.headers.add({\r",
+							"  key: 'clientrequestid',\r",
+							"  value: pm.variables.replaceIn('{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}{{$randomAlphaNumeric}}')\r",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
 }
