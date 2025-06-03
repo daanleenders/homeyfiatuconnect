@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bfb39d68-c253-437c-aa38-437bd4c80c2a",
+		"_postman_id": "2f047c57-beaa-4ce0-82c5-135d3310a98b",
 		"name": "FIAT API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "41263526"
@@ -183,7 +183,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://loginmyuconnect.fiat.com/accounts.getJWT?APIKey={{fiatApiKey}}&login_token={{loginToken}}",
+							"raw": "https://loginmyuconnect.fiat.com/accounts.getJWT?APIKey={{fiatApiKey}}&login_token={{loginToken}}&fields=profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP",
 							"protocol": "https",
 							"host": [
 								"loginmyuconnect",
@@ -229,8 +229,7 @@
 								},
 								{
 									"key": "fields",
-									"value": "profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP",
-									"disabled": true
+									"value": "profile.firstName,profile.lastName,profile.email,country,locale,data.disclaimerCodeGSDP"
 								}
 							]
 						}
@@ -538,17 +537,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{apiUrl}}/v4/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/status",
+							"raw": "{{apiUrl}}/v1/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/location/lastknown",
 							"host": [
 								"{{apiUrl}}"
 							],
 							"path": [
-								"v4",
+								"v1",
 								"accounts",
 								"{{loginUID}}",
 								"vehicles",
 								"{{vehicleVIN}}",
-								"status"
+								"location",
+								"lastknown"
 							]
 						}
 					},
@@ -560,16 +560,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{apiUrl}}/v4/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/status",
+							"raw": "{{apiUrl}}/v1/accounts/{{loginUID}}/vehicles/{{vehicleVIN}}/remote/status",
 							"host": [
 								"{{apiUrl}}"
 							],
 							"path": [
-								"v4",
+								"v1",
 								"accounts",
 								"{{loginUID}}",
 								"vehicles",
 								"{{vehicleVIN}}",
+								"remote",
 								"status"
 							]
 						}
