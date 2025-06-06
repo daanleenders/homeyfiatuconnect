@@ -8,6 +8,7 @@
     "measure_battery",
     "alarm_battery",
     "battery_charging_state",
+    "ev_charging_state",
     "fiat_vehicle_action_lock",
     "fiat_vehicle_action_unlock",
     "fiat_vehicle_action_hvac",
@@ -31,6 +32,7 @@
     "xlarge": "{{driverAssetsPath}}/images/xlarge.jpg"
   },
   "energy": {
+    "electricCar": true,
     "batteries": [
       "INTERNAL"
     ]

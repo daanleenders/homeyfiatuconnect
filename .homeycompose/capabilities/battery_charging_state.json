@@ -1,0 +1,85 @@
+{
+  "uiComponent": null,
+  "insights": false,
+  "type": "enum",
+  "title": {
+    "en": "DEPRECATED Battery charging state",
+    "nl": "DEPRECATED Oplaadstatus van de batterij",
+    "da": "DEPRECATED Batteriets opladningstilstand",
+    "it": "DEPRECATED Stato di carica della batteria",
+    "ko": "DEPRECATED 배터리 충전 상태",
+    "pl": "DEPRECATED Stan ładowania baterii",
+    "ru": "DEPRECATED Состояние зарядки аккумулятора",
+    "sv": "DEPRECATED Batteriets laddningsstatus",
+    "es": "DEPRECATED Estado de carga de la batería",
+    "fr": "DEPRECATED État de charge de la batterie",
+    "no": "DEPRECATED Batteriladingsstatus"
+  },
+  "desc": {
+    "en": "DEPRECATED The current charging state of the battery.",
+    "nl": "DEPRECATED De huidige oplaadstatus van de batterij.",
+    "da": "DEPRECATED Batteriets aktuelle opladningstilstand.",
+    "it": "DEPRECATED Lo stato di carica attuale della batteria.",
+    "ko": "DEPRECATED 배터리의 현재 충전 상태입니다.",
+    "pl": "DEPRECATED Bieżący stan naładowania baterii.",
+    "ru": "DEPRECATED Текущее состояние зарядки аккумулятора.",
+    "sv": "DEPRECATED Batteriets aktuella laddningsstatus.",
+    "es": "DEPRECATED El estado de carga actual de la batería.",
+    "fr": "DEPRECATED L'état de charge actuel de la batterie.",
+    "no": "DEPRECATED Batteriets nåværende ladingsstatus."
+  },
+  "values": [
+    {
+      "id": "charging",
+      "title": {
+        "en": "Charging",
+        "nl": "Opladen",
+        "da": "Oplader",
+        "it": "In carica",
+        "ko": "충전 중",
+        "pl": "Ładowanie",
+        "ru": "Заряжается",
+        "sv": "Laddning",
+        "es": "Cargando",
+        "fr": "Charge",
+        "no": "Lades"
+      }
+    },
+    {
+      "id": "discharging",
+      "title": {
+        "en": "Discharging",
+        "nl": "Ontladen",
+        "da": "Aflader",
+        "it": "Scarica",
+        "ko": "충전 중이 아님",
+        "pl": "Rozładowanie",
+        "ru": "Разряжается",
+        "sv": "Urladdning",
+        "es": "Descargando",
+        "fr": "Décharge",
+        "no": "Lades ut"
+      }
+    },
+    {
+      "id": "idle",
+      "title": {
+        "en": "Idle",
+        "nl": "Inactief",
+        "da": "Inaktiv",
+        "it": "Inattivo",
+        "ko": "대기",
+        "pl": "Bezczynność",
+        "ru": "В ожидании",
+        "sv": "Viloläge",
+        "es": "Reposo",
+        "fr": "Inactif",
+        "no": "Inaktiv"
+      }
+    }
+  ],
+  "color": "#6DD400",
+  "getable": true,
+  "setable": false,
+  "minCompatibility": "12.2.0"
+}

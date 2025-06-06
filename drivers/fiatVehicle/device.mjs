@@ -152,7 +152,11 @@ export default class FiatVehicle extends Homey.Device {
 			),
 			this.setCapabilityValue(
 				'battery_charging_state',
-				this.convertChartingStatusToChartingState(battery.chargingStatus),
+				this.convertChargingStatusToBatteryChargingState(battery.chargingStatus),
+			),
+			this.setCapabilityValue(
+				'ev_charging_state',
+				this.convertBatteryStatusToEvChargingState(battery),
 			),
 			this.setCapabilityValue(
 				'fiat_vehicle_state_plugged_in',
@@ -185,7 +189,7 @@ export default class FiatVehicle extends Homey.Device {
 		]);
 	}
 
-	convertChartingStatusToChartingState(chargingStatus) {
+	convertChargingStatusToBatteryChargingState(chargingStatus) {
 		if (chargingStatus === 'CHARGING') {
 			return 'charging';
 		}
@@ -193,6 +197,16 @@ export default class FiatVehicle extends Homey.Device {
 			return 'discharging';
 		}
 		return 'idle';
+	}
+
+	convertBatteryStatusToEvChargingState(battery) {
+		if (battery.plugInStatus === true) {
+			if (battery.chargingStatus === 'CHARGING') {
+				return 'plugged_in_charging';
+			}
+			return 'plugged_in';
+		}
+		return 'plugged_out';
 	}
 
 	async retrieveValidCognitoCredentials() {
