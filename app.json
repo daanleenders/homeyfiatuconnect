@@ -254,17 +254,96 @@
         ]
       },
       {
+        "deprecated": true,
         "id": "fiat_vehicle_state_plugged_in_false",
         "title": {
           "en": "The charging cable is removed",
           "nl": "De laadkabel is los gehaald"
         },
-        "deprecated": true,
         "args": [
           {
             "type": "device",
             "name": "device",
             "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      },
+      {
+        "deprecated": true,
+        "id": "battery_charging_state_changed",
+        "title": {
+          "en": "The battery charging state changed",
+          "nl": "De oplaadstatus van de batterij is veranderd",
+          "da": "Batteriets opladningstilstand er ændret",
+          "it": "Lo stato di carica della batteria è cambiato",
+          "ko": "배터리 충전 상태가 변경되면",
+          "pl": "Stan ładowania baterii uległ zmianie",
+          "ru": "Состояние зарядки батареи изменилось",
+          "sv": "Batteriets laddningsstatus har ändrats",
+          "es": "El estado de carga de la batería ha cambiado",
+          "fr": "L'état de charge de la batterie a changé",
+          "no": "Batteriladingsstatusen ble endret"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "charging",
+                "title": {
+                  "en": "Charging",
+                  "nl": "Opladen",
+                  "da": "Oplader",
+                  "it": "In carica",
+                  "ko": "충전 중",
+                  "pl": "Ładowanie",
+                  "ru": "Заряжается",
+                  "sv": "Laddning",
+                  "es": "Cargando",
+                  "fr": "Charge",
+                  "no": "Lades"
+                }
+              },
+              {
+                "id": "discharging",
+                "title": {
+                  "en": "Discharging",
+                  "nl": "Ontladen",
+                  "da": "Aflader",
+                  "it": "Scarica",
+                  "ko": "충전 중이 아님",
+                  "pl": "Rozładowanie",
+                  "ru": "Разряжается",
+                  "sv": "Urladdning",
+                  "es": "Descargando",
+                  "fr": "Décharge",
+                  "no": "Lades ut"
+                }
+              },
+              {
+                "id": "idle",
+                "title": {
+                  "en": "Idle",
+                  "nl": "Inactief",
+                  "da": "Inaktiv",
+                  "it": "Inattivo",
+                  "ko": "대기",
+                  "pl": "Bezczynność",
+                  "ru": "В ожидании",
+                  "sv": "Viloläge",
+                  "es": "Reposo",
+                  "fr": "Inactif",
+                  "no": "Inaktiv"
+                }
+              }
+            ],
+            "meta": {}
           }
         ]
       }
@@ -338,6 +417,85 @@
             "type": "device",
             "name": "device",
             "filter": "driver_id=fiatVehicle"
+          }
+        ]
+      },
+      {
+        "deprecated": true,
+        "id": "battery_charging_state_is",
+        "title": {
+          "en": "The battery charging state is",
+          "nl": "De oplaadstatus van de batterij is",
+          "da": "Batteriets opladningstilstand er",
+          "it": "Lo stato di carica della batteria è",
+          "ko": "배터리 충전 상태가 다음이면",
+          "pl": "Stan ładowania baterii to",
+          "ru": "Состояние зарядки аккумулятора:",
+          "sv": "Batteriets laddningsstatus är",
+          "es": "El estado de carga de la batería es",
+          "fr": "L'état de charge de la batterie est",
+          "no": "Batteriladingsstatusen er"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=fiatVehicle"
+          },
+          {
+            "name": "state",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "charging",
+                "title": {
+                  "en": "Charging",
+                  "nl": "Opladen",
+                  "da": "Oplader",
+                  "it": "In carica",
+                  "ko": "충전 중",
+                  "pl": "Ładowanie",
+                  "ru": "Заряжается",
+                  "sv": "Laddning",
+                  "es": "Cargando",
+                  "fr": "Charge",
+                  "no": "Lades"
+                }
+              },
+              {
+                "id": "discharging",
+                "title": {
+                  "en": "Discharging",
+                  "nl": "Ontladen",
+                  "da": "Aflader",
+                  "it": "Scarica",
+                  "ko": "충전 중이 아님",
+                  "pl": "Rozładowanie",
+                  "ru": "Разряжается",
+                  "sv": "Urladdning",
+                  "es": "Descargando",
+                  "fr": "Décharge",
+                  "no": "Lades ut"
+                }
+              },
+              {
+                "id": "idle",
+                "title": {
+                  "en": "Idle",
+                  "nl": "Inactief",
+                  "da": "Inaktiv",
+                  "it": "Inattivo",
+                  "ko": "대기",
+                  "pl": "Bezczynność",
+                  "ru": "В ожидании",
+                  "sv": "Viloläge",
+                  "es": "Reposo",
+                  "fr": "Inactif",
+                  "no": "Inaktiv"
+                }
+              }
+            ],
+            "meta": {}
           }
         ]
       }
@@ -546,6 +704,71 @@
     }
   ],
   "capabilities": {
+    "battery_charging_state": {
+      "uiComponent": null,
+      "insights": false,
+      "type": "enum",
+      "title": {
+        "en": "DEPRECATED Battery charging state"
+      },
+      "desc": {
+        "en": "Overrules the default battery_charging_state to gracefully deprecate it"
+      },
+      "values": [
+        {
+          "id": "charging",
+          "title": {
+            "en": "Charging",
+            "nl": "Opladen",
+            "da": "Oplader",
+            "it": "In carica",
+            "ko": "충전 중",
+            "pl": "Ładowanie",
+            "ru": "Заряжается",
+            "sv": "Laddning",
+            "es": "Cargando",
+            "fr": "Charge",
+            "no": "Lades"
+          }
+        },
+        {
+          "id": "discharging",
+          "title": {
+            "en": "Discharging",
+            "nl": "Ontladen",
+            "da": "Aflader",
+            "it": "Scarica",
+            "ko": "충전 중이 아님",
+            "pl": "Rozładowanie",
+            "ru": "Разряжается",
+            "sv": "Urladdning",
+            "es": "Descargando",
+            "fr": "Décharge",
+            "no": "Lades ut"
+          }
+        },
+        {
+          "id": "idle",
+          "title": {
+            "en": "Idle",
+            "nl": "Inactief",
+            "da": "Inaktiv",
+            "it": "Inattivo",
+            "ko": "대기",
+            "pl": "Bezczynność",
+            "ru": "В ожидании",
+            "sv": "Viloläge",
+            "es": "Reposo",
+            "fr": "Inactif",
+            "no": "Inaktiv"
+          }
+        }
+      ],
+      "color": "#6DD400",
+      "getable": true,
+      "setable": false,
+      "minCompatibility": "12.2.0"
+    },
     "fiat_vehicle_action_hvac": {
       "type": "boolean",
       "title": {
