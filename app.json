@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.daanleenders.fiatuconnect",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "compatibility": ">=12.4.5",
   "platforms": [
     "local"
@@ -270,6 +270,9 @@
       },
       {
         "deprecated": true,
+        "hint": {
+          "en": "This flow card can be replaced with a new one of the same name which adds more EV specific charging states"
+        },
         "id": "battery_charging_state_changed",
         "title": {
           "en": "The battery charging state changed",
@@ -422,6 +425,9 @@
       },
       {
         "deprecated": true,
+        "hint": {
+          "en": "This flow card can be replaced with a new one of the same name which adds more EV specific charging states"
+        },
         "id": "battery_charging_state_is",
         "title": {
           "en": "The battery charging state is",
@@ -709,10 +715,30 @@
       "insights": false,
       "type": "enum",
       "title": {
-        "en": "DEPRECATED Battery charging state"
+        "en": "DEPRECATED Battery charging state",
+        "nl": "DEPRECATED Oplaadstatus van de batterij",
+        "da": "DEPRECATED Batteriets opladningstilstand",
+        "it": "DEPRECATED Stato di carica della batteria",
+        "ko": "DEPRECATED 배터리 충전 상태",
+        "pl": "DEPRECATED Stan ładowania baterii",
+        "ru": "DEPRECATED Состояние зарядки аккумулятора",
+        "sv": "DEPRECATED Batteriets laddningsstatus",
+        "es": "DEPRECATED Estado de carga de la batería",
+        "fr": "DEPRECATED État de charge de la batterie",
+        "no": "DEPRECATED Batteriladingsstatus"
       },
       "desc": {
-        "en": "Overrules the default battery_charging_state to gracefully deprecate it"
+        "en": "DEPRECATED The current charging state of the battery.",
+        "nl": "DEPRECATED De huidige oplaadstatus van de batterij.",
+        "da": "DEPRECATED Batteriets aktuelle opladningstilstand.",
+        "it": "DEPRECATED Lo stato di carica attuale della batteria.",
+        "ko": "DEPRECATED 배터리의 현재 충전 상태입니다.",
+        "pl": "DEPRECATED Bieżący stan naładowania baterii.",
+        "ru": "DEPRECATED Текущее состояние зарядки аккумулятора.",
+        "sv": "DEPRECATED Batteriets aktuella laddningsstatus.",
+        "es": "DEPRECATED El estado de carga actual de la batería.",
+        "fr": "DEPRECATED L'état de charge actuel de la batterie.",
+        "no": "DEPRECATED Batteriets nåværende ladingsstatus."
       },
       "values": [
         {

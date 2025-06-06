@@ -1,6 +1,6 @@
 {
   "name": "nl.daanleenders.homeyfiatuconnect",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "main": "app.js",
   "engines": {
     "node": ">=12.16.1"
