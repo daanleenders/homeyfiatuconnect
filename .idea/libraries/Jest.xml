@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Jest" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$USER_HOME$/.config/herd/bin/nvm/v22.9.0/node_modules/@types/jest/index.d.ts" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.config/herd/bin/nvm/v22.9.0/node_modules/@types/jest/index.d.ts" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
