@@ -10,6 +10,10 @@ beforeAll(() => {
 	jest.useFakeTimers().setSystemTime(new Date(2025, 5, 16, 15, 15, 10, 0));
 });
 
+afterAll(() => {
+	jest.useRealTimers();
+});
+
 it.each([
 	{ name: 'has 1 millisecond left', expiry: new Date(2025, 5, 16, 15, 15, 10, 1).valueOf() },
 	{ name: 'has 134 millisecond left', expiry: new Date(2025, 5, 16, 15, 15, 10, 134).valueOf() },
