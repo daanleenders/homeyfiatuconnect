@@ -3,7 +3,7 @@
 import Homey from 'homey';
 import {
 	fetchVehicles, twoFactorPinAuthenticate, userLogin, userRetrieveCognitoCredentials,
-} from '../../api/FiatUConnectApi.mjs';
+} from '../../src/api/FiatUConnectApi.mjs';
 
 export default class FiatDriver extends Homey.Driver {
 

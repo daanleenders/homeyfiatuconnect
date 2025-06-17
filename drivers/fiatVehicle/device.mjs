@@ -9,7 +9,7 @@ import {
 	twoFactorPinAuthenticate,
 	userLogin,
 	userRetrieveCognitoCredentials,
-} from '../../api/FiatUConnectApi.mjs';
+} from '../../src/api/FiatUConnectApi.mjs';
 
 const pollingInterval = 10 * 60 * 1000;
 const batteryAlarmLevel = 20;
