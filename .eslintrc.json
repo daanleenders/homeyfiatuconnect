@@ -1,5 +1,9 @@
 {
-  "extends": "athom/homey-app",
+  "extends": [
+    "athom/homey-app",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
+  ],
   "rules": {
     "indent": [
       "error",

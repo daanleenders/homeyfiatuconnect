@@ -11,9 +11,12 @@
   "devDependencies": {
     "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.10",
     "eslint": "^7.32.0",
-    "eslint-config-athom": "^3.1.5"
+    "eslint-config-athom": "^3.1.5",
+    "eslint-plugin-jest": "^28.14.0",
+    "jest": "^30.0.0"
   },
   "dependencies": {
+    "@jest/globals": "^30.0.0",
     "aws-sigv4-fetch": "^4.4.1",
     "homey": "^3.8.1",
     "node-fetch-cookies": "^2.1.1"
