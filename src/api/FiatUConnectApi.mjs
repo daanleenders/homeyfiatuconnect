@@ -214,7 +214,7 @@ export async function twoFactorPinAuthenticate(cognitoCredentials, uid, pincode)
 }
 
 export function cognitoCredentialsStillValid(cognitoCredentials) {
-	return cognitoCredentials?.Expiration > (Date.now().valueOf() / 1000);
+	return cognitoCredentials?.Expiration > Math.ceil(Date.now().valueOf() / 1000);
 }
 
 export function pinTokenStillValid(pinExpiry) {
