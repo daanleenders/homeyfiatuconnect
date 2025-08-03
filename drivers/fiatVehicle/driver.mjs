@@ -12,6 +12,13 @@ export default class FiatDriver extends Homey.Driver {
 	 */
 	async onInit() {
 		this.log('FiatDriver has been initialized');
+
+		this.locationChangedTrigger = this.homey.flow.getDeviceTriggerCard('fiat_location_changed');
+	}
+
+	// noinspection JSUnusedGlobalSymbols It is used in device.mjs, but the IDE doesn't recognize that
+	triggerLocationChanged(vehicle, tokens) {
+		this.locationChangedTrigger.trigger(vehicle, tokens).catch((e) => this.log('error triggering location changed', e));
 	}
 
 	async onPair(session) {
