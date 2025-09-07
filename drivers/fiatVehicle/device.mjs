@@ -176,9 +176,10 @@ export default class FiatVehicle extends Homey.Device {
 		this.log('Last location at:', (new Date(timeStamp)).toUTCString());
 
 		const previousLocation = this.getStoreValue('location');
-		await this.setStoreValue('location', location);
+		this.setStoreValue('location', location).catch((e) => this.log('error storing location', e));
 
-		if (location.timestamp !== previousLocation.timestamp) {
+		if (!previousLocation
+			|| timeStamp !== previousLocation.timeStamp) {
 			let distance = 0;
 			if (previousLocation) {
 				distance = haversine(
