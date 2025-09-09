@@ -1,9 +1,11 @@
 'use strict';
 
 import Homey from 'homey';
+import haversine from 'haversine-distance';
 import {
 	cognitoCredentialsStillValid,
 	executeRemoteAction,
+	fetchVehicleLocation,
 	fetchVehicleStatus,
 	pinTokenStillValid,
 	twoFactorPinAuthenticate,
@@ -30,6 +32,9 @@ export default class FiatVehicle extends Homey.Device {
 
 		this.registerRemoteActions();
 		this.registerFlowActionCards();
+
+		await this.driver.ready();
+		this.log('Driver ready, starting polling');
 
 		this.poller = this.homey.setInterval(
 			this.updateCapabilitiesWithVehicleStatus.bind(this),
@@ -135,6 +140,9 @@ export default class FiatVehicle extends Homey.Device {
 		const uid = this.getStoreValue('uid');
 		const cognitoCredentials = await this.retrieveValidCognitoCredentials();
 
+		/**
+		 * Status
+		 */
 		const vehicleStatus = await fetchVehicleStatus(uid, cognitoCredentials, vin);
 
 		this.log('Last status at:', (new Date(vehicleStatus.timestamp)).toString());
@@ -142,51 +150,57 @@ export default class FiatVehicle extends Homey.Device {
 		const { battery } = vehicleStatus.evInfo;
 
 		await Promise.all([
-			this.setCapabilityValue(
-				'measure_battery',
-				battery.stateOfCharge,
-			),
-			this.setCapabilityValue(
-				'alarm_battery',
-				battery.stateOfCharge <= batteryAlarmLevel,
-			),
-			this.setCapabilityValue(
-				'battery_charging_state',
-				this.convertChargingStatusToBatteryChargingState(battery.chargingStatus),
-			),
-			this.setCapabilityValue(
-				'ev_charging_state',
-				this.convertBatteryStatusToEvChargingState(battery),
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_state_plugged_in',
-				battery.plugInStatus,
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_state_charging_level',
-				battery.chargingLevel,
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_measurement_distance_to_empty',
-				Math.round(vehicleStatus.vehicleInfo.fuel.distanceToEmpty.value),
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_measurement_distance_to_service',
-				parseFloat(vehicleStatus.vehicleInfo.distanceToService.distanceToService.value),
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_measurement_odometer',
-				Math.round(vehicleStatus.vehicleInfo.odometer.odometer.value),
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_measurement_time_to_fully_charge_l2',
-				battery.timeToFullyChargeL2,
-			),
-			this.setCapabilityValue(
-				'fiat_vehicle_measurement_time_to_fully_charge_l3',
-				battery.timeToFullyChargeL3,
-			),
+			this.setCapabilityValue('measure_battery', battery.stateOfCharge),
+			this.setCapabilityValue('alarm_battery', battery.stateOfCharge <= batteryAlarmLevel),
+			this.setCapabilityValue('battery_charging_state', this.convertChargingStatusToBatteryChargingState(battery.chargingStatus)),
+			this.setCapabilityValue('ev_charging_state', this.convertBatteryStatusToEvChargingState(battery)),
+			this.setCapabilityValue('fiat_vehicle_state_plugged_in', battery.plugInStatus),
+			this.setCapabilityValue('fiat_vehicle_state_charging_level', battery.chargingLevel),
+			this.setCapabilityValue('fiat_vehicle_measurement_distance_to_empty', Math.round(vehicleStatus.vehicleInfo.fuel.distanceToEmpty.value)),
+			this.setCapabilityValue('fiat_vehicle_measurement_distance_to_service', parseFloat(vehicleStatus.vehicleInfo.distanceToService.distanceToService.value)),
+			this.setCapabilityValue('fiat_vehicle_measurement_odometer', Math.round(vehicleStatus.vehicleInfo.odometer.odometer.value)),
+			this.setCapabilityValue('fiat_vehicle_measurement_time_to_fully_charge_l2', battery.timeToFullyChargeL2),
+			this.setCapabilityValue('fiat_vehicle_measurement_time_to_fully_charge_l3', battery.timeToFullyChargeL3),
 		]);
+
+		/**
+		 * Location
+		 */
+		const location = await fetchVehicleLocation(uid, cognitoCredentials, vin);
+		const {
+			longitude,
+			latitude,
+			timeStamp,
+		} = location;
+
+		this.log('Last location at:', (new Date(timeStamp)).toUTCString());
+
+		const previousLocation = this.getStoreValue('location');
+		this.setStoreValue('location', location).catch((e) => this.log('error storing location', e));
+
+		if (!previousLocation
+			|| timeStamp !== previousLocation.timeStamp) {
+			let distance = 0;
+			if (previousLocation) {
+				distance = haversine(
+					{ latitude: (previousLocation.latitude), longitude: previousLocation.longitude },
+					{ latitude, longitude },
+				);
+			}
+
+			if (
+				!previousLocation
+				|| distance > 25
+			) {
+				this.log('Location changed', distance);
+				await this.driver.triggerLocationChanged(this, {
+					latitude,
+					longitude,
+					distance: Math.round(distance),
+					last_updated: (new Date(timeStamp)).toLocaleString(this.homey.i18n.getLanguage(), { timeZone: this.homey.clock.getTimezone() }),
+				});
+			}
+		}
 	}
 
 	convertChargingStatusToBatteryChargingState(chargingStatus) {

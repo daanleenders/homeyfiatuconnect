@@ -267,6 +267,29 @@ export async function fetchVehicleStatus(uid, cognitoCredentials, vin) {
 	return data;
 }
 
+export async function fetchVehicleLocation(uid, cognitoCredentials, vin) {
+	const fetch = createAwsFetch(cognitoCredentials);
+
+	const response = await fetch(
+		`${UCONNECT_API_BASE}/v1/accounts/${uid}/vehicles/${vin}/location/lastknown`,
+		{
+			method: 'GET',
+			headers: {
+				...UCONNECT_API_DEFAULT_HEADERS,
+				clientrequestid: await generateClientRequestId(),
+			},
+		},
+	);
+
+	const data = await response.json();
+
+	if (response.status !== 200) {
+		throw new Error(data.message);
+	}
+
+	return data;
+}
+
 export async function executeRemoteAction(uid, vin, cognitoCredentials, pinToken, command) {
 	const fetch = createAwsFetch(cognitoCredentials);
 

@@ -257,6 +257,71 @@
           }
         }
       ]
+    },
+    {
+      "id": "fiat_location_changed",
+      "title": {
+        "en": "Location changed",
+        "nl": "Locatie is veranderd"
+      },
+      "hint": {
+        "en": "Triggers when the location of the vehicle changes to more than 25m away from the previous location. This is usually when you move the car or when the car is parked.",
+        "nl": "Gaat af als de locatie van het voertuig verandert, met een verschil groter dan 25m van de vorige locatie. Dit gebeurt meestal wanneer je het auto verplaatst of als het auto geparkeerd is."
+      },
+      "tokens": [
+        {
+          "type": "number",
+          "name": "latitude",
+          "title": {
+            "en": "Latitude",
+            "nl": "Breedtegraad"
+          },
+          "hint": {
+            "en": "Distance north or south of the equator.",
+            "nl": "Afstand ten noorden of zuiden van de evenaar."
+          },
+          "example": "52.2129919"
+        },
+        {
+          "type": "number",
+          "name": "longitude",
+          "title": {
+            "en": "Latitude",
+            "nl": "Lengtegraad"
+          },
+          "hint": {
+            "en": "Distance east or west of the prime meridian (Greenwich, London).",
+            "nl": "Afstand ten oosten of westen van de nulmeridiaan (Greenwhich, Londen)."
+          },
+          "example": "5.2793703"
+        },
+        {
+          "type": "number",
+          "name": "distance",
+          "title": {
+            "en": "Distance difference",
+            "nl": "Afstandsverschil"
+          },
+          "hint": {
+            "en": "The distance difference in meters between the last location and the current location as the crow flies.",
+            "nl": "Het afstandsverschil in meters tussen de laatste locatie en de huidige locatie in vogelvlucht"
+          },
+          "example": "15765"
+        },
+        {
+          "type": "string",
+          "name": "last_updated",
+          "title": {
+            "en": "Last updated",
+            "nl": "Laatst bijgewerkt"
+          },
+          "hint": {
+            "en": "The last time the location was updated.",
+            "nl": "De laatste keer dat de locatie is bijgewerkt."
+          },
+          "example": "Wed, 14 Jun 2017 07:00:00 GMT"
+        }
+      ]
     }
   ],
   "conditions": [
